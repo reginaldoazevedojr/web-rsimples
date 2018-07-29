@@ -1,0 +1,42 @@
+<mat-sidenav-container fullscreen>
+  <div fxLayout="row" fxFill class="content-general">
+    <div fxLayout="column" fxFill fxLayoutAlign="center stretch">
+      <div fxFlex="100" fxLayoutAlign="center center">
+        <mat-card class="card-login mat-elevation-z10" fxFlex="100" fxFlex.lg="35" fxFlex.xl="35" fxFlex.md="70">
+          <div fxLayoutAlign="center center">
+            <img src="../../assets/images/rsimples.jpg" alt="rsimples" id="logo" />
+          </div>
+          <br>
+          <div class="person-icon">
+            <mat-icon>person_pin</mat-icon>
+          </div>
+          <form>
+            <mat-form-field class="input-login">
+              <input matInput [placeholder]="'LOGIN.USERNAME' | translate" value="">
+            </mat-form-field>
+            <mat-form-field class="input-login">
+              <input matInput [placeholder]="'LOGIN.PASSWORD' | translate" type="password" value="">
+            </mat-form-field>
+            <mat-checkbox> {{'LOGIN.REMEMBER' | translate}}</mat-checkbox>
+            <div class="buttons">
+              <button class="btn-login" routerLink="/main" mat-raised-button mat-button color="primary">
+                {{ 'LOGIN.BTN_SUBMIT' | translate }}
+              </button>
+              <button class="btn-gmail" mat-raised-button mat-button>
+                Gmail
+              </button>
+              <button class="btn-facebook" mat-raised-button mat-button>
+                Facebook
+              </button>
+            </div>
+          </form>
+          <div class="box-create-new">
+            <p class="mat-caption">{{'LOGIN.REGISTER' | translate}}
+              <button mat-button routerLink="/register">{{'LOGIN.BTN_REGISTER' | translate}}</button>
+            </p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</mat-sidenav-container>

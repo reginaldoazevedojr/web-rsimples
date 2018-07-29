@@ -1,0 +1,21 @@
+{
+  "GLOBAL": {
+    "BACK": "Back"
+  },
+  "LOGIN": {
+    "USERNAME": "Mail",
+    "PASSWORD": "Password",
+    "REMEMBER": "Remember",
+    "BTN_SUBMIT": "Login",
+    "REGISTER": "No account yet?",
+    "BTN_REGISTER": "Create an account"
+  },
+  "REGISTER": {
+    "TITLE": "Create Account",
+    "NAME": "Name",
+    "MAIL": "Mail",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "BTN_SUBMIT": "Register"
+  }
+}

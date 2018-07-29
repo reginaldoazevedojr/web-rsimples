@@ -1,0 +1,46 @@
+.content-general {
+    background: url("../../../assets/images/background-login.jpg") #000000 no-repeat center;
+}
+.card-login {
+    margin: auto;
+}
+.input-login {
+    width: 100%;
+}
+.buttons {
+    margin-top: 25px;
+}
+.buttons button {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    margin-bottom: 7px;
+    text-align: center;
+}
+.btn-login {
+    margin-bottom: 35px !important;
+}
+.person-icon {
+    width: 100%;
+    text-align: center;
+}
+.person-icon .mat-icon {
+    color: #aaa;
+    font-size: 110px;
+    width: 110px;
+    height: 110px;
+}
+.btn-gmail {
+    background: #dd5044;
+    color: #ffffff;
+}
+.btn-facebook {
+    background: #4267B2;
+    color: #ffffff;
+}
+.box-create-new {
+    text-align: center;
+}
+#logo {
+    width: 200px;
+}
