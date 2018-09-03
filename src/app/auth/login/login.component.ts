@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,31 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private socialAuthService: AuthService) {
     translate.addLangs(['en', 'pt-br']);
     translate.setDefaultLang('pt-br');
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en/) ? browserLang : 'pt-br');
   }
 
-  ngOnInit() {
+  public ngOnInit() {
+  }
+
+  public socialSignIn(socialPlatform: string) {
+
+    let socialPlatformProvider;
+
+    if (socialPlatform === 'google') {
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
+
+    if (socialPlatform === 'facebook') {
+      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    }
+
+    this.socialAuthService.signIn(socialPlatformProvider).then(user => {
+      console.log(user);
+    });
   }
 
 }

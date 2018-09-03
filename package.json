@@ -26,6 +26,7 @@
     "@angular/router": "6.0.6",
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
+    "angularx-social-login": "^1.2.3",
     "core-js": "^2.4.1",
     "rxjs": "^6.2.1",
     "zone.js": "^0.8.26"

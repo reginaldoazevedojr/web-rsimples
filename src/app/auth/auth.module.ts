@@ -8,6 +8,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthRoutingModule } from './auth-routing.module';
 import { MaterialModule } from '../../material-module';
 import { RegisterComponent } from './register/register.component';
+import { getAuthServiceConfigs } from '../../auth-service-social';
+import { AuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -26,7 +28,14 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     AuthRoutingModule,
+    SocialLoginModule,
   ],
-  declarations: [LoginComponent, RegisterComponent]
+  declarations: [LoginComponent, RegisterComponent],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
+  ]
 })
 export class AuthModule { }

@@ -22,10 +22,10 @@
               <button class="btn-login" routerLink="/main" mat-raised-button mat-button color="primary">
                 {{ 'LOGIN.BTN_SUBMIT' | translate }}
               </button>
-              <button class="btn-gmail" mat-raised-button mat-button>
+              <button class="btn-gmail" (click)="$event.preventDefault();socialSignIn('google')" mat-raised-button mat-button>
                 Gmail
               </button>
-              <button class="btn-facebook" mat-raised-button mat-button>
+              <button class="btn-facebook" (click)="$event.preventDefault();socialSignIn('facebook')" mat-raised-button mat-button>
                 Facebook
               </button>
             </div>
