@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
+import { AuthService as AuthOauthService} from '../../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,11 @@ import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private translate: TranslateService, private socialAuthService: AuthService) {
+  public constructor(
+    private translate: TranslateService,
+    private socialAuthService: AuthService,
+    private authSvc: AuthOauthService
+  ) {
     translate.addLangs(['en', 'pt-br']);
     translate.setDefaultLang('pt-br');
     const browserLang = translate.getBrowserLang();
@@ -33,6 +38,12 @@ export class LoginComponent implements OnInit {
 
     this.socialAuthService.signIn(socialPlatformProvider).then(user => {
       console.log(user);
+    });
+  }
+
+  public login(username: string, password: string) {
+    this.authSvc.oauthAuth(username, password).then((result) => {
+      console.log(result);
     });
   }
 
