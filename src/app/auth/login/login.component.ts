@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { AuthService as AuthOauthService} from '../../service/auth.service';
+import { SocialUser } from 'angularx-social-login/src/entities/user';
 
 @Component({
   selector: 'app-login',
@@ -36,8 +37,10 @@ export class LoginComponent implements OnInit {
       socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
     }
 
-    this.socialAuthService.signIn(socialPlatformProvider).then(user => {
-      console.log(user);
+    this.socialAuthService.signIn(socialPlatformProvider).then(socialUser => {
+      this.authSvc.oauthSocialAuth(socialUser).then((result) => {
+        console.log(result);
+      });
     });
   }
 
