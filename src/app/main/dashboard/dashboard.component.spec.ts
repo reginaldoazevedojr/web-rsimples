@@ -2,6 +2,7 @@
 import { fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
+import { MaterialModule } from '../../../material-module';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -9,6 +10,9 @@ describe('DashboardComponent', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MaterialModule
+      ],
       declarations: [ DashboardComponent ]
     })
     .compileComponents();

@@ -36,7 +36,7 @@ export class AuthService {
         this.storageSvc.setAuthorizationToken(result.access_token);
         return result;
       }).catch((error) => {
-        console.log(error);
+        return error;
     });
   }
 
@@ -66,17 +66,16 @@ export class AuthService {
         });
         return result;
       }).catch((error) => {
-        console.log(error);
+        return error;
       });
   }
 
   public userSession() {
     return this.http
       .get(environment.apiHost + '/user-session').toPromise().then((result) => {
-        console.log(result);
         return result;
       }).catch((error) => {
-        console.log(error);
+        return error;
       });
   }
 }

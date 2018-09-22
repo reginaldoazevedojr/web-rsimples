@@ -13,7 +13,10 @@ export class StorageService {
    * @returns {any}
    */
   public getUserSession() {
-    return JSON.parse(sessionStorage.getItem('user'));
+    const oauthUser = new OauthUsers();
+    const userJson = JSON.parse(sessionStorage.getItem('user'));
+    Object.assign(userJson, oauthUser);
+    return oauthUser;
   }
 
   /**

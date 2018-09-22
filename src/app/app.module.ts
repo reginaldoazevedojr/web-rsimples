@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { MainModule } from './main/main.module';
 import { AuthInterceptor } from './http-interceptors/AuthInterceptor';
+import { AuthService } from './service/auth.service';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AuthInterceptor } from './http-interceptors/AuthInterceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
