@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { MainModule } from './main/main.module';
 import { AuthInterceptor } from './http-interceptors/AuthInterceptor';
 import { AuthService } from './service/auth.service';
+import { StorageService } from './service/storage.service';
 
 
 @NgModule({
@@ -31,8 +32,7 @@ import { AuthService } from './service/auth.service';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    },
-    AuthService
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -8,7 +8,9 @@
     "REMEMBER": "Remember",
     "BTN_SUBMIT": "Login",
     "REGISTER": "No account yet?",
-    "BTN_REGISTER": "Create an account"
+    "BTN_REGISTER": "Create an account",
+    "MESSAGE_ERROR_LOGIN": "User or Password incorrect!",
+    "MESSAGE_ERROR_LOGIN_SOCIAL": "Fail social authentication!"
   },
   "REGISTER": {
     "TITLE": "Create Account",

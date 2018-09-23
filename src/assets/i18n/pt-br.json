@@ -8,7 +8,9 @@
     "REMEMBER": "Manter Conectado?",
     "BTN_SUBMIT": "Entrar",
     "REGISTER": "Não é registrado?",
-    "BTN_REGISTER": "Cria sua conta"
+    "BTN_REGISTER": "Cria sua conta",
+    "MESSAGE_ERROR_LOGIN": "Usuário ou Senha Inválido(s)!",
+    "MESSAGE_ERROR_LOGIN_SOCIAL": "Falha na autenticação por rede social!"
   },
   "REGISTER": {
     "TITLE": "Criação de conta",

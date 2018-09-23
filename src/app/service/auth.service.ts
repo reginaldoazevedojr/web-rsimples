@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { SocialUser } from 'angularx-social-login/src/entities/user';
 import { StorageService } from './storage.service';
 import { OauthUsers } from '../entity/oauth-users';
+import { reject } from 'q';
 
 @Injectable({
   providedIn: 'root'
@@ -33,10 +34,18 @@ export class AuthService {
       )
       .toPromise()
       .then((result: any) => {
+        if (result.hasOwnProperty('error')) {
+          Promise.reject(result);
+        }
         this.storageSvc.setAuthorizationToken(result.access_token);
+        this.userSession().then((userJson) => {
+          const user = new OauthUsers();
+          Object.assign(user, userJson);
+          this.storageSvc.setUserSession(user);
+        });
         return result;
       }).catch((error) => {
-        return error;
+        throw error;
     });
   }
 

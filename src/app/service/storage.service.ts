@@ -13,9 +13,14 @@ export class StorageService {
    * @returns {any}
    */
   public getUserSession() {
-    const oauthUser = new OauthUsers();
     const userJson = JSON.parse(sessionStorage.getItem('user'));
-    Object.assign(userJson, oauthUser);
+    const oauthUser = new OauthUsers();
+
+    if (!userJson) {
+      return null;
+    }
+
+    Object.assign(oauthUser, userJson);
     return oauthUser;
   }
 
