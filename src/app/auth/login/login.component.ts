@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { AuthService as AuthOauthService} from '../../service/auth.service';
-import { SocialUser } from 'angularx-social-login/src/entities/user';
 import { StorageService } from '../../service/storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +16,10 @@ export class LoginComponent implements OnInit {
 
   public linkHome = ['main', 'dashboard'];
 
+  public loginForm: FormGroup;
+
+  public username: FormControl;
+
   public constructor(
     private translate: TranslateService,
     private socialAuthService: AuthService,
@@ -23,12 +27,18 @@ export class LoginComponent implements OnInit {
     private storageSvc: StorageService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private formBuilder: FormBuilder,
   ) {
     translate.addLangs(['en', 'pt-br']);
     translate.setDefaultLang('pt-br');
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en/) ? browserLang : 'pt-br');
+
+    this.loginForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
   }
 
   public ngOnInit() {
@@ -74,7 +84,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public login(username: string, password: string) {
+  public login() {
+    const username = this.loginForm.get('username').value;
+    const password = this.loginForm.get('password').value;
     this.authSvc.oauthAuth(username, password).then((result) => {
       this.router.navigate(this.linkHome);
     }).catch((error) => {

@@ -10,8 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { MainModule } from './main/main.module';
 import { AuthInterceptor } from './http-interceptors/AuthInterceptor';
-import { AuthService } from './service/auth.service';
-import { StorageService } from './service/storage.service';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,6 +22,8 @@ import { StorageService } from './service/storage.service';
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     AuthModule,
     MainModule
@@ -32,7 +33,8 @@ import { StorageService } from './service/storage.service';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    FormBuilder
   ],
   bootstrap: [AppComponent]
 })

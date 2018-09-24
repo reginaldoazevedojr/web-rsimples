@@ -10,6 +10,7 @@ import { MaterialModule } from '../../material-module';
 import { RegisterComponent } from './register/register.component';
 import { getAuthServiceConfigs } from '../../auth-service-social';
 import { AuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -29,6 +30,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     AuthRoutingModule,
     SocialLoginModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [LoginComponent, RegisterComponent],
   providers: [

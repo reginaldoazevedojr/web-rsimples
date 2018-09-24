@@ -10,7 +10,10 @@
     "REGISTER": "Não é registrado?",
     "BTN_REGISTER": "Cria sua conta",
     "MESSAGE_ERROR_LOGIN": "Usuário ou Senha Inválido(s)!",
-    "MESSAGE_ERROR_LOGIN_SOCIAL": "Falha na autenticação por rede social!"
+    "MESSAGE_ERROR_LOGIN_SOCIAL": "Falha na autenticação por rede social!",
+    "FORM_USERNAME_EMAIL": "Por favor entre com email válido",
+    "FORM_USERNAME_REQUIRED": "Usuário é obrigatório",
+    "FORM_PASSWORD_REQUIRED": "Senha é obrigatório"
   },
   "REGISTER": {
     "TITLE": "Criação de conta",

@@ -4,28 +4,41 @@
       <div fxFlex="100" fxLayoutAlign="center center">
         <mat-card class="card-login mat-elevation-z10" fxFlex="100" fxFlex.lg="35" fxFlex.xl="35" fxFlex.md="70">
           <div fxLayoutAlign="center center">
-            <img src="../../assets/images/rsimples.jpg" alt="rsimples" id="logo" />
+            <img src="../../assets/images/rsimples.jpg" alt="rsimples" id="logo"/>
           </div>
           <br>
           <div class="person-icon">
             <mat-icon>person_pin</mat-icon>
           </div>
-          <form>
+          <form [formGroup]="loginForm"  (submit)="$event.preventDefault();login()">
             <mat-form-field class="input-login">
-              <input matInput [placeholder]="'LOGIN.USERNAME' | translate" value="" #username>
+              <input matInput [placeholder]="'LOGIN.USERNAME' | translate" formControlName="username">
+              <mat-error
+                *ngIf="loginForm.get('username').hasError('email') && !loginForm.get('username').hasError('required')">
+                {{'LOGIN.FORM_USERNAME_EMAIL' | translate}}
+              </mat-error>
+              <mat-error *ngIf="loginForm.get('username').hasError('required')">
+                {{'LOGIN.FORM_USERNAME_REQUIRED' | translate}}
+              </mat-error>
             </mat-form-field>
             <mat-form-field class="input-login">
-              <input matInput [placeholder]="'LOGIN.PASSWORD' | translate" type="password" value="" #password>
+              <input matInput [placeholder]="'LOGIN.PASSWORD' | translate" type="password" formControlName="password">
+              <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                {{'LOGIN.FORM_PASSWORD_REQUIRED' | translate}}
+              </mat-error>
             </mat-form-field>
+            <br>
             <mat-checkbox> {{'LOGIN.REMEMBER' | translate}}</mat-checkbox>
             <div class="buttons">
-              <button class="btn-login" (click)="$event.preventDefault();login(username.value, password.value)" mat-raised-button mat-button color="primary">
+              <button class="btn-login" [disabled]="!loginForm.valid" mat-raised-button mat-button color="primary">
                 {{ 'LOGIN.BTN_SUBMIT' | translate }}
               </button>
-              <button class="btn-gmail" (click)="$event.preventDefault();socialSignIn('google')" mat-raised-button mat-button>
+              <button class="btn-gmail" (click)="$event.preventDefault();socialSignIn('google')" mat-raised-button
+                      mat-button>
                 Gmail
               </button>
-              <button class="btn-facebook" (click)="$event.preventDefault();socialSignIn('facebook')" mat-raised-button mat-button>
+              <button class="btn-facebook" (click)="$event.preventDefault();socialSignIn('facebook')" mat-raised-button
+                      mat-button>
                 Facebook
               </button>
             </div>
