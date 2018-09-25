@@ -27,3 +27,17 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 .dark-theme {
   @include angular-material-theme($dark-theme);
 }
+
+#containerLoadingRsimples {
+  position: fixed;
+  min-width: 100%;
+  height: 100vh;
+  top: 0 !important;
+  z-index: 9999 !important;
+  background: #000000;
+  opacity: 0.25;
+
+  div {
+    height: 100vh
+  }
+}

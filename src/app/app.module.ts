@@ -11,6 +11,8 @@ import { AuthModule } from './auth/auth.module';
 import { MainModule } from './main/main.module';
 import { AuthInterceptor } from './http-interceptors/AuthInterceptor';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material-module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    MaterialModule,
+    FlexLayoutModule,
     AuthModule,
     MainModule
   ],
