@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_BASE_HREF, CommonModule } from '@angular/common';
+import { MaterialModule } from '../material-module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,7 +13,8 @@ describe('AppComponent', () => {
         BrowserModule,
         BrowserAnimationsModule,
         CommonModule,
-        AppRoutingModule
+        AppRoutingModule,
+        MaterialModule
       ],
       declarations: [
         AppComponent
