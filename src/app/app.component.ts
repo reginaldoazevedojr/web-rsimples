@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ThemeService } from './service/theme.service';
-import { LoadService } from './service/load.service';
+import { LoadingService } from './service/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,5 @@ import { LoadService } from './service/load.service';
 })
 export class AppComponent {
 
-  constructor(public themeSvc: ThemeService, public loadingSvc: LoadService) { }
+  constructor(public themeSvc: ThemeService, public loadingSvc: LoadingService) { }
 }

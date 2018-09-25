@@ -6,6 +6,7 @@ import { StorageService } from '../../service/storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoadingService } from '../../service/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
+    private loadingSvc: LoadingService
   ) {
     translate.addLangs(['en', 'pt-br']);
     translate.setDefaultLang('pt-br');
@@ -71,10 +73,13 @@ export class LoginComponent implements OnInit {
       socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
     }
 
+    this.loadingSvc.show();
     this.socialAuthService.signIn(socialPlatformProvider).then(socialUser => {
       this.authSvc.oauthSocialAuth(socialUser).then((result) => {
+        this.loadingSvc.hide();
         this.router.navigate(this.linkHome);
       }).catch(error => {
+        this.loadingSvc.hide();
         this.translate.get('LOGIN.MESSAGE_ERROR_LOGIN_SOCIAL').subscribe(message => {
           this.snackBar.open(message, 'Login', {
             duration: 2000,
@@ -87,9 +92,12 @@ export class LoginComponent implements OnInit {
   public login() {
     const username = this.loginForm.get('username').value;
     const password = this.loginForm.get('password').value;
+    this.loadingSvc.show();
     this.authSvc.oauthAuth(username, password).then((result) => {
+      this.loadingSvc.hide();
       this.router.navigate(this.linkHome);
     }).catch((error) => {
+      this.loadingSvc.hide();
       this.translate.get('LOGIN.MESSAGE_ERROR_LOGIN').subscribe(message => {
         this.snackBar.open(message, 'Login', {
           duration: 2000,
